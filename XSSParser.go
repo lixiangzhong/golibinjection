@@ -4,6 +4,10 @@
 
 package GSQLI
 
+import (
+	"strings"
+)
+
 const (
 	TYPE_NONE     = iota
 	TYPE_BLACK    /* ban always */
@@ -207,42 +211,12 @@ var BLACKTAG = []string{
 	"XSS",
 }
 
-func cstrcasecmp_with_null(a, b string) int {
-	n := len(a)
-	var ca uint8
-	var cb uint8
-	/* printf("Comparing to %s %.*s\n", a, (int)n, b); */
-	bi := 0
-	ai := 0
-	for n > 0 {
-		n--
-		cb = b[bi]
-		bi++
-		if bi >= len(b) {
-			return -1
-		}
-
-		if cb == 0 {
-			continue
-		}
-
-		ca = a[ai]
-		ai++
-		if cb >= 'a' && cb <= 'z' {
-			cb -= 0x20
-		}
-		/* printf("Comparing %c vs %c with %d left\n", ca, cb, (int)n); */
-		if ca != cb {
-			return 1
-		}
-	}
-
-	if n == 0 {
-		/* printf(" MATCH \n"); */
+func cstrcasecmp_with_null(a, b string, cmplen int) int {
+	if strings.Contains(strings.ToUpper(b[:cmplen]), a) {
 		return 0
-	} else {
-		return 1
 	}
+
+	return 1
 }
 
 /*
@@ -309,13 +283,13 @@ func htmlencode_startswith(a, b string) bool {
 	return false
 }
 
-func is_black_tag(s string) bool {
-	if len(s) < 3 {
+func is_black_tag(s string, len int) bool {
+	if len < 3 {
 		return false
 	}
 
 	for _, black := range BLACKTAG {
-		if cstrcasecmp_with_null(black, s) == 0 {
+		if cstrcasecmp_with_null(black, s, len) == 0 {
 			/* printf("Got black tag %s\n", *black); */
 			return true
 		}
@@ -340,12 +314,12 @@ func is_black_tag(s string) bool {
 	return false
 }
 
-func is_black_attr(s string) int {
-	if len(s) < 2 {
+func is_black_attr(s string, len int) int {
+	if len < 2 {
 		return TYPE_NONE
 	}
 
-	if len(s) >= 5 {
+	if len >= 5 {
 		/* JavaScript on.* */
 		if (s[0] == 'o' || s[0] == 'O') && (s[1] == 'n' || s[1] == 'N') {
 			/* printf("Got JavaScript on- attribute name\n"); */
@@ -353,14 +327,14 @@ func is_black_attr(s string) int {
 		}
 
 		/* XMLNS can be used to create arbitrary tags */
-		if cstrcasecmp_with_null("XMLNS", s) == 0 || cstrcasecmp_with_null("XLINK", s) == 0 {
+		if cstrcasecmp_with_null("XMLNS", s, len) == 0 || cstrcasecmp_with_null("XLINK", s, len) == 0 {
 			/*      printf("Got XMLNS and XLINK tags\n"); */
 			return TYPE_BLACK
 		}
 	}
 
 	for _, black := range BLACKATTR {
-		if cstrcasecmp_with_null(black.name, s) == 0 {
+		if cstrcasecmp_with_null(black.name, s, len) == 0 {
 			/*      printf("Got banned attribute name %s\n", black.name); */
 			return black.atype
 		}
@@ -381,17 +355,7 @@ func is_black_url(s string) bool {
 	javascript_url := "JAVA"
 
 	/* skip whitespace */
-	i := 0
-	for i < len(s) && (s[i] <= 32 || s[i] >= 127) {
-		/*
-		 * HEY: this is a signed character.
-		 *  We are intentionally skipping high-bit characters too
-		 *  since they are not ASCII, and Opera sometimes uses UTF-8 whitespace.
-		 *
-		 * Also in EUC-JP some of the high bytes are just ignored.
-		 */
-		i++
-	}
+	s = strings.TrimSpace(s)
 
 	if htmlencode_startswith(data_url, s) {
 		return true
@@ -424,11 +388,11 @@ func libinjection_is_xss(s string, flags int) int {
 		if h5.token_type == DOCTYPE {
 			return 1
 		} else if h5.token_type == TAG_NAME_OPEN {
-			if is_black_tag(h5.s[h5.token_start:]) {
+			if is_black_tag(h5.s[h5.token_start:], h5.token_len) {
 				return 1
 			}
 		} else if h5.token_type == ATTR_NAME {
-			attr = is_black_attr(h5.s[h5.token_start:])
+			attr = is_black_attr(h5.s[h5.token_start:], h5.token_len)
 		} else if h5.token_type == ATTR_VALUE {
 			/*
 			 * IE6,7,8 parsing works a bit differently so
@@ -451,7 +415,7 @@ func libinjection_is_xss(s string, flags int) int {
 			case TYPE_BLACK:
 				return 1
 			case TYPE_ATTR_URL:
-				if is_black_url(h5.s[h5.token_start:]) {
+				if is_black_url(h5.s[h5.token_start : h5.token_start+h5.token_len]) {
 					return 1
 				}
 				break
@@ -459,7 +423,7 @@ func libinjection_is_xss(s string, flags int) int {
 				return 1
 			case TYPE_ATTR_INDIRECT:
 				/* an attribute name is specified in a _value_ */
-				if is_black_attr(h5.s[h5.token_start:]) > 0 {
+				if is_black_attr(h5.s[h5.token_start:], h5.token_len) > 0 {
 					return 1
 				}
 				break
@@ -491,12 +455,12 @@ func libinjection_is_xss(s string, flags int) int {
 
 			if h5.token_len > 5 {
 				/*  IE <?import pseudo-tag */
-				if cstrcasecmp_with_null("IMPORT", h5.s[h5.token_start:]) == 0 {
+				if cstrcasecmp_with_null("IMPORT", h5.s[h5.token_start:], h5.token_len) == 0 {
 					return 1
 				}
 
 				/*  XML Entity definition */
-				if cstrcasecmp_with_null("ENTITY", h5.s[h5.token_start:]) == 0 {
+				if cstrcasecmp_with_null("ENTITY", h5.s[h5.token_start:], h5.token_len) == 0 {
 					return 1
 				}
 			}
@@ -505,10 +469,7 @@ func libinjection_is_xss(s string, flags int) int {
 	return 0
 }
 
-/*
- * wrapper
- */
-func libinjection_xss(s string) bool {
+func XSSParser(s string) bool {
 	if libinjection_is_xss(s, DATA_STATE) == 1 {
 		return true
 	}
@@ -526,8 +487,4 @@ func libinjection_xss(s string) bool {
 	}
 
 	return false
-}
-
-func XSSParser(s string) bool {
-	return libinjection_xss(s)
 }

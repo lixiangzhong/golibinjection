@@ -105,7 +105,7 @@ func h5_is_white(ch uint8) bool {
 	 * \f = form feed = 0x0C
 	 * \r = cr  = 0x0D
 	 */
-	return (ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f' || ch == '\r')
+	return (ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f' || ch == '\r' || ch == ' ')
 }
 
 func memchr(src string, pos int, char byte) int {
@@ -148,7 +148,7 @@ func h5_state_data(hs *h5_state_t) int {
 	} else {
 		hs.token_start = hs.pos
 		hs.token_type = DATA_TEXT
-		hs.token_len = hs.len - idx - hs.pos
+		hs.token_len = idx - hs.pos
 		hs.pos = idx + 1
 		hs.state = h5_state_tag_open
 		if hs.token_len == 0 {
@@ -452,7 +452,7 @@ func h5_state_attribute_value_quote(hs *h5_state_t, qchar byte) int {
 		hs.state = h5_state_eof
 	} else {
 		hs.token_start = hs.pos
-		hs.token_len = (hs.len - idx) - hs.pos
+		hs.token_len = idx - hs.pos
 		hs.token_type = ATTR_VALUE
 		hs.state = h5_state_after_attribute_value_quoted_state
 		hs.pos += hs.token_len + 1
@@ -567,7 +567,7 @@ func h5_state_bogus_comment(hs *h5_state_t) int {
 		hs.state = h5_state_eof
 	} else {
 		hs.token_start = hs.pos
-		hs.token_len = (hs.len - idx) - hs.pos
+		hs.token_len = idx - hs.pos
 		hs.pos = idx + 1
 		hs.state = h5_state_data
 	}
@@ -601,7 +601,7 @@ func h5_state_bogus_comment2(hs *h5_state_t) int {
 
 		/* ends in %> */
 		hs.token_start = hs.pos
-		hs.token_len = (hs.len - idx) - hs.pos
+		hs.token_len = idx - hs.pos
 		hs.pos = idx + 2
 		hs.state = h5_state_data
 		hs.token_type = TAG_COMMENT
@@ -712,7 +712,7 @@ func h5_state_comment(hs *h5_state_t) int {
 
 		/* ends in -. or -!> */
 		hs.token_start = hs.pos
-		hs.token_len = (hs.len - idx) - hs.pos
+		hs.token_len = idx - hs.pos
 		hs.pos = (idx + offset)
 		hs.state = h5_state_data
 		hs.token_type = TAG_COMMENT
@@ -736,7 +736,7 @@ func h5_state_cdata(hs *h5_state_t) int {
 		} else if hs.s[idx+1] == CHAR_RIGHTB && hs.s[idx+2] == CHAR_GT {
 			hs.state = h5_state_data
 			hs.token_start = hs.pos
-			hs.token_len = (hs.len - idx) - hs.pos
+			hs.token_len = idx - hs.pos
 			hs.pos = idx + 3
 			hs.token_type = DATA_TEXT
 			return 1
@@ -760,7 +760,7 @@ func h5_state_doctype(hs *h5_state_t) int {
 		hs.token_len = hs.len - hs.pos
 	} else {
 		hs.state = h5_state_data
-		hs.token_len = (hs.len - idx) - hs.pos
+		hs.token_len = idx - hs.pos
 		hs.pos = idx + 1
 	}
 	return 1

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b22c42cf-bd84-4408-be74-718edb93db85" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b22c42cf-bd84-4408-be74-718edb93db85" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,23 +11,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="XSSParser.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="XSSParser.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/XSSParser.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="113" column="28" selection-start-line="113" selection-start-column="28" selection-end-line="113" selection-end-column="28" />
+            <state relative-caret-position="250">
+              <caret line="531" selection-start-line="531" selection-end-line="531" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XSSParser_test.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="XSSParser_test.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/XSSParser_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-              <folding>
-                <element signature="e#15#36#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="519">
+              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -37,8 +32,8 @@
       <file leaf-file-name="Html5.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Html5.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="556" column="30" selection-start-line="556" selection-start-column="30" selection-end-line="556" selection-end-column="30" />
+            <state relative-caret-position="146">
+              <caret line="94" selection-start-line="94" selection-end-line="94" />
               <folding>
                 <element signature="e#147#168#0" expanded="true" />
               </folding>
@@ -173,6 +168,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="TestHistory">
+    <history-entry file="Test_XSSParser_in_github_com_koangel_grapeSQLI - 2018.05.17 at 21h 04m 57s.xml">
+      <configuration name="Test_XSSParser in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test_XSSParser_in_github_com_koangel_grapeSQLI - 2018.05.17 at 21h 06m 35s.xml">
+      <configuration name="Test_XSSParser in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
@@ -181,7 +184,7 @@
       <window_info anchor="right" id="Weex Documents" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3295838" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3295838" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2496" />
@@ -189,7 +192,7 @@
       <window_info anchor="right" id="Database" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39932507" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -210,7 +213,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/XSSParser_test.go</url>
-          <line>40</line>
+          <line>42</line>
           <properties />
         </line-breakpoint>
       </breakpoints>
@@ -220,28 +223,25 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Html5.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="556" column="30" selection-start-line="556" selection-start-column="30" selection-end-line="556" selection-end-column="30" />
+        <state relative-caret-position="146">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
           <folding>
             <element signature="e#147#168#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XSSParser_test.go">
+    <entry file="file://$PROJECT_DIR$/XSSParser.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-          <folding>
-            <element signature="e#15#36#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="250">
+          <caret line="531" selection-start-line="531" selection-end-line="531" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XSSParser.go">
+    <entry file="file://$PROJECT_DIR$/XSSParser_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="113" column="28" selection-start-line="113" selection-start-column="28" selection-end-line="113" selection-end-column="28" />
+        <state relative-caret-position="519">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
         </state>
       </provider>
     </entry>

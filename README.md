@@ -14,7 +14,7 @@ cgo is bad idea,it's very slow and cgo is not go,So We Rewrite libinjection for 
     go get -u github.com/koangel/grapeSQLI
 ```
 
-### example
+### xss example
 
 ```
 package main
@@ -22,4 +22,18 @@ package main
 import (
     "github.com/koangel/grapeSQLI"
 )
+
+func main() {
+    if GSQLI.XSSParser("<a href=\"  javascript:alert(1);\" >") {
+        // todo something
+    }
+}
+
+```
+
+### xss benchmark
+
+```
+Benchmark_XSSParser-8   	 1000000	      1233 ns/op	     184 B/op	      27 allocs/op
+Benchmark_XSSParserParallel-8   	 5000000	       349 ns/op	     184 B/op	      27 allocs/op
 ```
