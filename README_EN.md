@@ -1,22 +1,25 @@
 ### grapeSQLI
 
-grapeSQLI是一种简单易用的Sql inject & XSS分析程序。
+grapeSQLI is easy to use Sql Inject & XSS Parser.For pure go (like libinjection)
 
-兼容且使用libinjection指纹数据以及搜索模式。
+grapeSQLI use libinjection fingerprint data and search mode.
 
-### 不要使用任何CGO
+libinjection is great and perfect library,so we just translate related code to golang. but we optimize the code for golang.
 
-CGO是一个特别糟糕的东西，并且他很慢也不是GO的核心内容，他是一种社区兼容的妥协。
-所以我们为GOLANG重写了libinjection。
+grapeSQLI is pure go library.
 
-### 用法
+
+### don't use any cgo
+
+cgo is bad idea,it's very slow and cgo is not go,So We Rewrite libinjection for golang.
+
+### usage
 
 ```
     go get -u github.com/koangel/grapeSQLI
 ```
 
-
-### xss例子
+### xss example
 
 ```
 package main

@@ -4,10 +4,6 @@
 
 package GSQLI
 
-import (
-	"strings"
-)
-
 const (
 	DATA_TEXT = iota
 	TAG_NAME_OPEN
@@ -95,26 +91,6 @@ func libinjection_h5_next(hs *h5_state_t) int {
 		return hs.state(hs)
 	}
 	return 0
-}
-
-func h5_is_white(ch uint8) bool {
-	/*
-	 * \t = horizontal tab = 0x09
-	 * \n = newline = 0x0A
-	 * \v = vertical tab = 0x0B
-	 * \f = form feed = 0x0C
-	 * \r = cr  = 0x0D
-	 */
-	return (ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f' || ch == '\r' || ch == ' ')
-}
-
-func memchr(src string, pos int, char byte) int {
-	ipos := strings.IndexByte(src, char)
-	if ipos == -1 {
-		return -1
-	}
-
-	return ipos + pos
 }
 
 func h5_skip_white(hs *h5_state_t) int {
