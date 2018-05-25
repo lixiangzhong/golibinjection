@@ -74,3 +74,99 @@ func flag2delim(flag int) uint8 {
 
 	return CHAR_NULL
 }
+
+type parserFunc func(sf *sqli_state) int
+
+var (
+	tokenCharMap = [256]parserFunc{
+		parse_white, /* 0 */
+		parse_white, /* 1 */
+		parse_white, /* 2 */
+		parse_white, /* 3 */
+		parse_white, /* 4 */
+		parse_white, /* 5 */
+		parse_white, /* 6 */
+		parse_white, /* 7 */
+		parse_white, /* 8 */
+		parse_white, /* 9 */
+		parse_white, /* 10 */
+		parse_white, /* 11 */
+		parse_white, /* 12 */
+		parse_white, /* 13 */
+		parse_white, /* 14 */
+		parse_white, /* 15 */
+		parse_white, /* 16 */
+		parse_white, /* 17 */
+		parse_white, /* 18 */
+		parse_white, /* 19 */
+		parse_white, /* 20 */
+		parse_white, /* 21 */
+		parse_white, /* 22 */
+		parse_white, /* 23 */
+		parse_white, /* 24 */
+		parse_white, /* 25 */
+		parse_white, /* 26 */
+		parse_white, /* 27 */
+		parse_white, /* 28 */
+		parse_white, /* 29 */
+		parse_white, /* 30 */
+		parse_white, /* 31 */
+		parse_white, /* 32 */
+	}
+)
+
+/* Parsers
+ *
+ * 适当做了部分修改
+ */
+
+func parse_white(sf *sqli_state) int {
+	return sf.pos + 1
+}
+
+func parse_operator1(sf *sqli_state) int {
+	pos := sf.pos
+	st_assign_char(sf.current, TYPE_OPERATOR, pos, 1, sf.s[pos:pos+1])
+	return pos + 1
+}
+
+func parse_other(sf *sqli_state) int {
+	pos := sf.pos
+	st_assign_char(sf.current, TYPE_UNKNOWN, pos, 1, sf.s[pos:pos+1])
+	return pos + 1
+}
+
+func parse_char(sf *sqli_state) int {
+	pos := sf.pos
+	st_assign_char(sf.current, sf.s[pos], pos, 1, sf.s[pos:pos+1])
+	return pos + 1
+}
+
+func parse_eol_comment(sf *sqli_state) int {
+	cs := sf.s
+	slen := sf.slen
+	pos := sf.pos
+
+	endpos := memchr(cs[pos:], pos, '\n')
+	if endpos == -1 {
+		st_assign(sf.current, TYPE_COMMENT, pos, slen-pos, cs[pos:])
+		return slen
+	} else {
+		st_assign(sf.current, TYPE_COMMENT, pos, endpos-pos, cs[pos:endpos])
+		return endpos + 1
+	}
+}
+
+/** In ANSI mode, hash is an operator
+ *  In MYSQL mode, it's a EOL comment like '--'
+ */
+func parse_hash(sf *sqli_state) int {
+	sf.stats_comment_hash += 1
+	if (sf.flags & FLAG_SQL_MYSQL) > 0 {
+		sf.stats_comment_hash += 1
+		return parse_eol_comment(sf)
+	} else {
+		st_assign_char(sf.current, TYPE_OPERATOR, sf.pos, 1, "#")
+		return sf.pos + 1
+	}
+}

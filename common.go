@@ -149,3 +149,70 @@ func bsearch_keyword_type(key string) uint8 {
 func is_keyword(key string) bool {
 	return bsearch_keyword_type(key) > 0
 }
+
+func st_clear(s *sqli_token) {
+	s.count = 0
+	s.len = 0
+	s.pos = 0
+	s.ttype = 0
+	s.val = ""
+}
+
+func st_assign_char(s *sqli_token, stype uint8, pos int, len int, value string) {
+	/* done to eliminate unused warning */
+	s.ttype = stype
+	s.pos = pos
+	s.len = 1
+	s.val = value
+}
+
+func st_assign(st *sqli_token, stype uint8, pos int, len int, value string) {
+	MSIZE := 32
+	last := len
+	if last >= MSIZE {
+		last = MSIZE - 1
+	}
+
+	st.ttype = stype
+	st.pos = pos
+	st.len = last
+	st.val = value
+}
+
+func st_copy(dest, src *sqli_token) {
+	dest.ttype = src.ttype
+	dest.val = src.val
+	dest.count = src.count
+	dest.len = src.len
+	dest.pos = src.pos
+	dest.str_close = src.str_close
+	dest.str_open = src.str_open
+}
+
+func st_is_arithmetic_op(st *sqli_token) bool {
+	ch := st.val[0]
+	return (st.ttype == TYPE_OPERATOR && st.len == 1 &&
+		(ch == '*' || ch == '/' || ch == '-' || ch == '+' || ch == '%'))
+}
+
+func st_is_unary_op(st *sqli_token) bool {
+	str := st.val
+	len := st.len
+
+	if st.ttype != TYPE_OPERATOR {
+		return false
+	}
+
+	switch len {
+	case 1:
+		return str[0] == '+' || str[0] == '-' || str[0] == '!' || str[0] == '~'
+	case 2:
+		return str[0] == '!' && str[1] == '!'
+	case 3:
+		return cstrcasecmp("NOT", str[:3]) == 0
+	default:
+		return false
+	}
+
+	return false
+}

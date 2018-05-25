@@ -36,7 +36,7 @@ const (
 			"CHAR_WHITE", 
 			"CHAR_WHITE", 
 			"CHAR_WHITE", 
-			"CHAR_BANG", 
+			"CHAR_OP2", 
 			"CHAR_STR", 
 			"CHAR_HASH", 
 			"CHAR_MONEY", 
