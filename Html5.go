@@ -112,7 +112,7 @@ func h5_state_eof(hs *h5_state_t) int {
 }
 
 func h5_state_data(hs *h5_state_t) int {
-	idx := memchr(hs.s[hs.pos:], hs.pos, CHAR_LT)
+	idx := memchr(hs.s, hs.pos, CHAR_LT)
 	if idx == -1 {
 		hs.token_start = hs.pos
 		hs.token_len = hs.len - hs.pos
@@ -420,7 +420,7 @@ func h5_state_attribute_value_quote(hs *h5_state_t, qchar byte) int {
 		hs.pos += 1
 	}
 
-	idx := memchr(hs.s[hs.pos:], hs.pos, qchar)
+	idx := memchr(hs.s, hs.pos, qchar)
 	if idx == -1 {
 		hs.token_start = hs.pos
 		hs.token_len = hs.len - hs.pos
@@ -535,7 +535,7 @@ func h5_state_self_closing_start_tag(hs *h5_state_t) int {
  * 12.2.4.44
  */
 func h5_state_bogus_comment(hs *h5_state_t) int {
-	idx := memchr(hs.s[hs.pos:], hs.pos, CHAR_GT)
+	idx := memchr(hs.s, hs.pos, CHAR_GT)
 	if idx == -1 {
 		hs.token_start = hs.pos
 		hs.token_len = hs.len - hs.pos
@@ -560,7 +560,7 @@ func h5_state_bogus_comment2(hs *h5_state_t) int {
 
 	pos = hs.pos
 	for {
-		idx := memchr(hs.s[pos:], hs.pos, CHAR_PERCENT)
+		idx := memchr(hs.s, pos, CHAR_PERCENT)
 		if idx == -1 || idx+1 >= hs.len {
 			hs.token_start = hs.pos
 			hs.token_len = hs.len - hs.pos
@@ -642,7 +642,7 @@ func h5_state_comment(hs *h5_state_t) int {
 	pos = hs.pos
 	for {
 
-		idx := memchr(hs.s[pos:], hs.pos, CHAR_DASH)
+		idx := memchr(hs.s, pos, CHAR_DASH)
 
 		/* did not find anything or has less than 3 chars left */
 		if idx == -1 || idx > hs.len-3 {
@@ -700,7 +700,7 @@ func h5_state_cdata(hs *h5_state_t) int {
 	var pos int
 	pos = hs.pos
 	for {
-		idx := memchr(hs.s[pos:], hs.pos, CHAR_RIGHTB)
+		idx := memchr(hs.s, pos, CHAR_RIGHTB)
 
 		/* did not find anything or has less than 3 chars left */
 		if idx == -1 || idx > hs.len-3 {
@@ -730,7 +730,7 @@ func h5_state_doctype(hs *h5_state_t) int {
 	hs.token_start = hs.pos
 	hs.token_type = DOCTYPE
 
-	idx := memchr(hs.s[hs.pos:], hs.pos, CHAR_GT)
+	idx := memchr(hs.s, hs.pos, CHAR_GT)
 	if idx == -1 {
 		hs.state = h5_state_eof
 		hs.token_len = hs.len - hs.pos

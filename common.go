@@ -16,7 +16,7 @@ func h5_is_white(ch uint8) bool {
 }
 
 func memchr(src string, pos int, char byte) int {
-	ipos := strings.IndexByte(src, char)
+	ipos := strings.IndexByte(src[pos:], char)
 	if ipos == -1 {
 		return -1
 	}
