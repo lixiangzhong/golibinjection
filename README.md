@@ -6,10 +6,6 @@ grapeSQLI是一种简单易用的Sql inject & XSS分析程序。
 
 libinjection已经拥有非常完美的思维模式，没必要颠覆它，所以我的大部分代码来自于libinjection，并针对GOLANG做出优化。
 
-### 不要使用任何CGO
-
-CGO是一个特别糟糕的东西，并且他很慢也不是GO的核心内容，他是一种社区兼容的妥协。
-所以我们为GOLANG重写了libinjection。
 
 ### 用法
 

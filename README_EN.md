@@ -9,10 +9,6 @@ libinjection is great and perfect library,so we just translate related code to g
 grapeSQLI is pure go library.
 
 
-### don't use any cgo
-
-cgo is bad idea,it's very slow and cgo is not go,So We Rewrite libinjection for golang.
-
 ### usage
 
 ```
