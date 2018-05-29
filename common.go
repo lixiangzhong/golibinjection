@@ -138,9 +138,9 @@ func streqp(a string, b string) int {
 
 // 使用map进行搜索，比bsearch还快
 func bsearch_keyword_type(key string) uint8 {
-	kt, has := fingerprints.Keywords[strings.ToUpper(key)]
+	kt, has := szKeywordMap[strings.ToUpper(key)]
 	if has {
-		return kt[0]
+		return kt.vtype
 	}
 
 	return 0
@@ -176,17 +176,20 @@ func st_assign(st *sqli_token, stype uint8, pos int, len int, value string) {
 	st.ttype = stype
 	st.pos = pos
 	st.len = last
-	st.val = value
+	st.val = value[:last]
 }
 
-func st_copy(dest, src *sqli_token) {
-	dest.ttype = src.ttype
-	dest.val = src.val
-	dest.count = src.count
-	dest.len = src.len
-	dest.pos = src.pos
-	dest.str_close = src.str_close
-	dest.str_open = src.str_open
+func st_copy(dst, src *sqli_token) {
+	//reflect.Copy(reflect.ValueOf(dst), reflect.ValueOf(src))
+	*dst = *src
+
+	/*dst.ttype = src.ttype
+	dst.val = src.val
+	dst.count = src.count
+	dst.len = src.len
+	dst.pos = src.pos
+	dst.str_close = src.str_close
+	dst.str_open = src.str_open*/
 }
 
 func st_is_arithmetic_op(st *sqli_token) bool {
@@ -215,4 +218,8 @@ func st_is_unary_op(st *sqli_token) bool {
 	}
 
 	return false
+}
+
+func streq(a, b string) bool {
+	return strings.Compare(a, b) == 0
 }

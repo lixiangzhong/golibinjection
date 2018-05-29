@@ -66,7 +66,7 @@ type sqli_token struct {
 	 */
 	count int
 
-	ttype     uint8
+	ttype     byte
 	str_open  uint8
 	str_close uint8
 	val       string
@@ -386,7 +386,7 @@ func parse_eol_comment(sf *sqli_state) int {
 		st_assign(sf.current, TYPE_COMMENT, pos, slen-pos, cs[pos:])
 		return slen
 	} else {
-		st_assign(sf.current, TYPE_COMMENT, pos, endpos-pos, cs[pos:endpos])
+		st_assign(sf.current, TYPE_COMMENT, pos, endpos-pos, cs[pos:])
 		return endpos + 1
 	}
 }
@@ -499,7 +499,7 @@ func parse_slash(sf *sqli_state) int {
 		/* till end of line */
 		clen = slen - pos
 	} else {
-		clen = ptr + 2 - pos
+		clen = ptr + 4
 	}
 
 	/*
@@ -518,7 +518,7 @@ func parse_slash(sf *sqli_state) int {
 		ctype = TYPE_EVIL
 	}
 
-	st_assign(sf.current, ctype, pos, clen, cs[pos:pos+clen])
+	st_assign(sf.current, ctype, pos, clen, cs[pos:])
 	return pos + clen
 }
 
@@ -556,13 +556,13 @@ func parse_operator2(sf *sqli_state) int {
 		/*
 		 * special 3-char operator
 		 */
-		st_assign(sf.current, TYPE_OPERATOR, pos, 3, cs[pos:pos+3])
+		st_assign(sf.current, TYPE_OPERATOR, pos, 3, cs[pos:])
 		return pos + 3
 	}
 
-	ch = sf.lookup(sf, LOOKUP_OPERATOR, cs[pos:pos+2], 2)
+	ch = uint8(sf.lookup(sf, LOOKUP_OPERATOR, []byte(cs[pos:])))
 	if ch != 0 {
-		st_assign(sf.current, ch, pos, 2, cs[pos:pos+2])
+		st_assign(sf.current, ch, pos, 2, cs[pos:])
 		return pos + 2
 	}
 
@@ -573,7 +573,7 @@ func parse_operator2(sf *sqli_state) int {
 
 	if cs[pos] == ':' {
 		/* ':' is not an operator */
-		st_assign(sf.current, TYPE_COLON, pos, 1, cs[pos:pos+1])
+		st_assign(sf.current, TYPE_COLON, pos, 1, cs[pos:])
 		return pos + 1
 	} else {
 		/*
@@ -807,7 +807,7 @@ func parse_bstring(sf *sqli_state) int {
 	if pos+2+wlen >= slen || cs[pos+2+wlen] != '\'' {
 		return parse_word(sf)
 	}
-	st_assign(sf.current, TYPE_NUMBER, pos, wlen+3, cs[pos:pos+wlen+3])
+	st_assign(sf.current, TYPE_NUMBER, pos, wlen+3, cs[pos:])
 	return pos + 2 + wlen + 1
 }
 
@@ -835,7 +835,7 @@ func parse_xstring(sf *sqli_state) int {
 	if pos+2+wlen >= slen || cs[pos+2+wlen] != '\'' {
 		return parse_word(sf)
 	}
-	st_assign(sf.current, TYPE_NUMBER, pos, wlen+3, cs[pos:pos+wlen+3])
+	st_assign(sf.current, TYPE_NUMBER, pos, wlen+3, cs[pos:])
 	return pos + 2 + wlen + 1
 }
 
@@ -852,7 +852,7 @@ func parse_bword(sf *sqli_state) int {
 		st_assign(sf.current, TYPE_BAREWORD, pos, sf.slen-pos, cs[pos:])
 		return sf.slen
 	} else {
-		st_assign(sf.current, TYPE_BAREWORD, pos, endptr-pos+1, cs[pos:pos+endptr-pos+1])
+		st_assign(sf.current, TYPE_BAREWORD, pos, endptr-pos+1, cs[pos:])
 		return endptr + 1
 	}
 }
@@ -864,7 +864,7 @@ func parse_word(sf *sqli_state) int {
 	pos := sf.pos
 	wlen := strlencspn(cs[pos:], " []{}<>:\\?=@!#~+-*/&|^%(),';\t\n\v\f\r\"\240\000")
 
-	st_assign(sf.current, TYPE_BAREWORD, pos, wlen, cs[pos:pos+wlen])
+	st_assign(sf.current, TYPE_BAREWORD, pos, wlen, cs[pos:])
 
 	/* now we need to look inside what we good for "." and "`"
 	 * and see if what is before is a keyword or not
@@ -872,7 +872,7 @@ func parse_word(sf *sqli_state) int {
 	for i := 0; i < sf.current.len; i++ {
 		delim = sf.current.val[i]
 		if delim == '.' || delim == '`' {
-			ch = sf.lookup(sf, LOOKUP_WORD, sf.current.val, i)
+			ch = uint8(sf.lookup(sf, LOOKUP_WORD, []byte(sf.current.val)))
 			if ch != TYPE_NONE && ch != TYPE_BAREWORD {
 				/* needed for swig */
 				st_clear(sf.current)
@@ -880,7 +880,7 @@ func parse_word(sf *sqli_state) int {
 				 * we got something like "SELECT.1"
 				 * or SELECT`column`
 				 */
-				st_assign(sf.current, ch, pos, i, cs[pos:pos+i])
+				st_assign(sf.current, ch, pos, i, cs[pos:])
 				return pos + i
 			}
 		}
@@ -891,7 +891,7 @@ func parse_word(sf *sqli_state) int {
 	 */
 	if wlen < LIBINJECTION_SQLI_TOKEN_SIZE {
 
-		ch = sf.lookup(sf, LOOKUP_WORD, sf.current.val, wlen)
+		ch = uint8(sf.lookup(sf, LOOKUP_WORD, []byte(sf.current.val)))
 		if ch == CHAR_NULL {
 			ch = TYPE_BAREWORD
 		}
@@ -916,7 +916,7 @@ func parse_tick(sf *sqli_state) int {
 	/* check value of string to see if it's a keyword,
 	 * function, operator, etc
 	 */
-	ch := sf.lookup(sf, LOOKUP_WORD, sf.current.val, sf.current.len)
+	ch := sf.lookup(sf, LOOKUP_WORD, []byte(sf.current.val))
 	if ch == TYPE_FUNCTION {
 		/* if it's a function, then convert token */
 		sf.current.ttype = TYPE_FUNCTION
@@ -970,10 +970,10 @@ func parse_var(sf *sqli_state) int {
 
 	xlen = strlencspn(cs[pos:], " <>:\\?=@!#~+-*/&|^%(),';\t\n\v\f\r'`\"")
 	if xlen == 0 {
-		st_assign(sf.current, TYPE_VARIABLE, pos, 0, cs[pos:pos+1])
+		st_assign(sf.current, TYPE_VARIABLE, pos, 1, cs[pos:])
 		return pos
 	} else {
-		st_assign(sf.current, TYPE_VARIABLE, pos, xlen, cs[pos:pos+xlen])
+		st_assign(sf.current, TYPE_VARIABLE, pos, xlen, cs[pos:])
 		return pos + xlen
 	}
 }
@@ -1078,10 +1078,10 @@ func parse_number(sf *sqli_state) int {
 		if len(digits) > 0 {
 			xlen = strlenspn(cs[pos+2:], digits)
 			if xlen == 0 {
-				st_assign(sf.current, TYPE_BAREWORD, pos, 2, cs[pos:pos+2])
+				st_assign(sf.current, TYPE_BAREWORD, pos, 2, cs[pos:])
 				return pos + 2
 			} else {
-				st_assign(sf.current, TYPE_NUMBER, pos, 2+xlen, cs[pos:pos+2+xlen])
+				st_assign(sf.current, TYPE_NUMBER, pos, 2+xlen, cs[pos:])
 				return pos + 2 + xlen
 			}
 		}
@@ -1147,9 +1147,9 @@ func parse_number(sf *sqli_state) int {
 		 * "10.10E"
 		 * ".E"
 		 * this is a WORD not a number!! */
-		st_assign(sf.current, TYPE_BAREWORD, start, pos-start, cs[start:pos])
+		st_assign(sf.current, TYPE_BAREWORD, start, pos-start, cs[start:])
 	} else {
-		st_assign(sf.current, TYPE_NUMBER, start, pos-start, cs[start:pos])
+		st_assign(sf.current, TYPE_NUMBER, start, pos-start, cs[start:])
 	}
 	return pos
 }

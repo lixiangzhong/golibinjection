@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"sort"
+	"strings"
 )
 
 func UnmarshalSqlifingerprint(data []byte) (Sqlifingerprint, error) {
@@ -40,12 +41,20 @@ const (
 	V        Keyword = "v"
 )
 
+type keyword_t struct {
+	word  string
+	vtype byte
+}
+
 var (
 	fingerprints Sqlifingerprint
+	szKeywordMap map[string]keyword_t = map[string]keyword_t{}
 )
 
 func init() {
-	initData([]byte(sqliparser))
+	for _, vk := range szkeywords {
+		szKeywordMap[strings.ToUpper(vk.word)] = vk
+	}
 }
 
 func initData(body []byte) error {
@@ -73,9 +82,19 @@ func LoadData(filename string) error {
 
 func Lookup(key string) int {
 	if len(fingerprints.Fingerprints) == 0 {
-		return -1
+		return 0
 	}
 
 	// 由于SORT内的SEARCH就是二分查找法，所以不必单独编写
-	return sort.SearchStrings(fingerprints.Fingerprints, key)
+	upKey := strings.ToUpper(key)
+	pos := sort.SearchStrings(fingerprints.Fingerprints, upKey)
+	if pos == -1 {
+		return 0
+	}
+
+	if strings.Compare(fingerprints.Fingerprints[pos], upKey) == 0 {
+		return pos
+	}
+
+	return 0
 }

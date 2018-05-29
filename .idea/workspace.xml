@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b22c42cf-bd84-4408-be74-718edb93db85" name="Default" comment="" />
+    <list default="true" id="b22c42cf-bd84-4408-be74-718edb93db85" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Fingerprints.go" beforeDir="false" afterPath="$PROJECT_DIR$/Fingerprints.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLParser.go" beforeDir="false" afterPath="$PROJECT_DIR$/SQLParser.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLParserFingers.go" beforeDir="false" afterPath="$PROJECT_DIR$/SQLParserFingers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tokenizer.go" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/common.go" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,33 +16,99 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="XSSParser.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/XSSParser.go">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="SQLParser.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SQLParser.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="531" selection-start-line="531" selection-end-line="531" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XSSParser_test.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/XSSParser_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Html5.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Html5.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="94" selection-start-line="94" selection-end-line="94" />
+            <state relative-caret-position="179">
+              <caret line="113" selection-start-line="113" selection-end-line="113" />
               <folding>
-                <element signature="e#147#168#0" expanded="true" />
+                <element signature="e#15#36#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sqlparse_data.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sqlparse_data.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="8665" column="20" lean-forward="true" selection-start-line="8665" selection-start-column="20" selection-end-line="8665" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SQLParserFingers.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SQLParserFingers.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testing.go" pinned="false" current-in-tab="false">
+        <entry file="file://G:/Go/src/testing/testing.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="778" selection-start-line="778" selection-end-line="778" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="panic.go" pinned="false" current-in-tab="false">
+        <entry file="file://G:/Go/src/runtime/panic.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="587" selection-start-line="587" selection-end-line="587" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SQLParser_test.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SQLParser_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="e#15#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fingerprints.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Fingerprints.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.go" pinned="false" current-in-tab="false">
+        <entry file="file://G:/Go/src/sort/search.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="102" column="1" lean-forward="true" selection-start-line="102" selection-start-column="1" selection-end-line="102" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="142" selection-start-line="142" selection-end-line="142" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tokenizer.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tokenizer.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="332">
+              <caret line="521" selection-start-line="521" selection-end-line="521" />
             </state>
           </provider>
         </entry>
@@ -53,6 +125,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>memchr</find>
+      <find>libinjection_sqli_lookup_word</find>
+      <find>fingerprint</find>
+      <find>init</find>
+      <find>*/</find>
+      <find>*/&quot;</find>
+      <find>lookup</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="G:\Go" />
@@ -65,6 +143,12 @@
         <option value="$PROJECT_DIR$/XSSParser_test.go" />
         <option value="$PROJECT_DIR$/Html5.go" />
         <option value="$PROJECT_DIR$/XSSParser.go" />
+        <option value="$PROJECT_DIR$/common.go" />
+        <option value="$PROJECT_DIR$/SQLParser.go" />
+        <option value="$PROJECT_DIR$/Tokenizer.go" />
+        <option value="$PROJECT_DIR$/SQLParser_test.go" />
+        <option value="$PROJECT_DIR$/Fingerprints.go" />
+        <option value="$PROJECT_DIR$/SQLParserFingers.go" />
       </list>
     </option>
   </component>
@@ -113,6 +197,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,7 +209,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -150,7 +234,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Test.BenchmarkSQLInject in github.com/koangel/grapeSQLI">
+    <configuration name="BenchmarkSQLInject in github.com/koangel/grapeSQLI" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="grapeSQLI" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <framework value="gobench" />
+      <kind value="PACKAGE" />
+      <package value="github.com/koangel/grapeSQLI" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^BenchmarkSQLInject$" />
+    </configuration>
+    <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="grapeSQLI" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/koangel/grapeSQLI" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^Test_SqlCheck$" />
+    </configuration>
     <configuration name="Test_XSSParser in github.com/koangel/grapeSQLI" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="grapeSQLI" />
       <working_directory value="$PROJECT_DIR$" />
@@ -162,18 +268,49 @@
       <filePath value="$PROJECT_DIR$/" />
       <pattern value="^Test_XSSParser$" />
     </configuration>
+    <list>
+      <item itemvalue="Go Test.Test_XSSParser in github.com/koangel/grapeSQLI" />
+      <item itemvalue="Go Test.Test_SqlCheck in github.com/koangel/grapeSQLI" />
+      <item itemvalue="Go Test.BenchmarkSQLInject in github.com/koangel/grapeSQLI" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.BenchmarkSQLInject in github.com/koangel/grapeSQLI" />
+        <item itemvalue="Go Test.Test_SqlCheck in github.com/koangel/grapeSQLI" />
         <item itemvalue="Go Test.Test_XSSParser in github.com/koangel/grapeSQLI" />
       </list>
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_XSSParser_in_github_com_koangel_grapeSQLI - 2018.05.17 at 21h 04m 57s.xml">
-      <configuration name="Test_XSSParser in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 22h 45m 11s.xml">
+      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_XSSParser_in_github_com_koangel_grapeSQLI - 2018.05.17 at 21h 06m 35s.xml">
-      <configuration name="Test_XSSParser in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 22h 47m 23s.xml">
+      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 22h 58m 14s.xml">
+      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 23h 01m 23s.xml">
+      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 23h 02m 00s.xml">
+      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 23h 05m 08s.xml">
+      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 23h 08m 43s.xml">
+      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 23h 09m 37s.xml">
+      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 23h 12m 31s.xml">
+      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="BenchmarkSQLInject_in_github_com_koangel_grapeSQLI - 2018.05.29 at 23h 13m 13s.xml">
+      <configuration name="BenchmarkSQLInject in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -181,23 +318,23 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Weex Documents" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3295838" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2496" />
-      <window_info anchor="right" id="LuaJ" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Weex Documents" order="3" weight="0.32995737" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32951945" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2521322" />
+      <window_info anchor="right" id="LuaJ" order="3" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32951945" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39932507" />
-      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993135" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
@@ -214,34 +351,155 @@
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/XSSParser_test.go</url>
           <line>42</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/SQLParser.go</url>
+          <line>1161</line>
           <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/Fingerprints.go</url>
+          <line>83</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/Tokenizer.go</url>
+          <line>491</line>
+          <properties />
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="26" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Html5.go">
+    <entry file="file://$PROJECT_DIR$/XSSParser.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="94" selection-start-line="94" selection-end-line="94" />
-          <folding>
-            <element signature="e#147#168#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="8784">
+          <caret line="490" selection-start-line="490" selection-end-line="490" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/XSSParser.go">
+    <entry file="file://$PROJECT_DIR$/Html5.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="531" selection-start-line="531" selection-end-line="531" />
+        <state relative-caret-position="1692">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/XSSParser_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
+        <state relative-caret-position="324">
           <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Html5.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1692">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XSSParser.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8784">
+          <caret line="490" selection-start-line="490" selection-end-line="490" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XSSParser_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Fingerprints_test.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://G:/Go/src/runtime/asm_amd64.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="2367" column="38" lean-forward="true" selection-start-line="2367" selection-start-column="38" selection-end-line="2367" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://G:/Go/src/runtime/panic.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="587" selection-start-line="587" selection-end-line="587" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://G:/Go/src/sort/search.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="102" column="1" lean-forward="true" selection-start-line="102" selection-start-column="1" selection-end-line="102" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sqlparse_data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="8665" column="20" lean-forward="true" selection-start-line="8665" selection-start-column="20" selection-end-line="8665" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tokenizer.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="521" selection-start-line="521" selection-end-line="521" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLParser.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="113" selection-start-line="113" selection-end-line="113" />
+          <folding>
+            <element signature="e#15#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://G:/Go/src/testing/testing.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="778" selection-start-line="778" selection-end-line="778" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLParser_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#15#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Fingerprints.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLParserFingers.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
