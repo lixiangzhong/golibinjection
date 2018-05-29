@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b22c42cf-bd84-4408-be74-718edb93db85" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Fingerprints.go" beforeDir="false" afterPath="$PROJECT_DIR$/Fingerprints.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLParser.go" beforeDir="false" afterPath="$PROJECT_DIR$/SQLParser.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLParserFingers.go" beforeDir="false" afterPath="$PROJECT_DIR$/SQLParserFingers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tokenizer.go" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/common.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLParser_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/SQLParser_test.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SQLParserFingers.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SQLParserFingers.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLParserFingers.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="324">
+              <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -65,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SQLParser_test.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SQLParser_test.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SQLParser_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="414">
+              <caret line="23" column="95" selection-start-line="23" selection-start-column="95" selection-end-line="23" selection-end-column="95" />
               <folding>
                 <element signature="e#15#36#0" expanded="true" />
               </folding>
@@ -146,9 +142,9 @@
         <option value="$PROJECT_DIR$/common.go" />
         <option value="$PROJECT_DIR$/SQLParser.go" />
         <option value="$PROJECT_DIR$/Tokenizer.go" />
-        <option value="$PROJECT_DIR$/SQLParser_test.go" />
         <option value="$PROJECT_DIR$/Fingerprints.go" />
         <option value="$PROJECT_DIR$/SQLParserFingers.go" />
+        <option value="$PROJECT_DIR$/SQLParser_test.go" />
       </list>
     </option>
   </component>
@@ -234,7 +230,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.BenchmarkSQLInject in github.com/koangel/grapeSQLI">
+  <component name="RunManager" selected="Go Test.BenchmarkSQLInjectPB in github.com/koangel/grapeSQLI">
     <configuration name="BenchmarkSQLInject in github.com/koangel/grapeSQLI" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="grapeSQLI" />
       <working_directory value="$PROJECT_DIR$" />
@@ -245,6 +241,17 @@
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
       <pattern value="^BenchmarkSQLInject$" />
+    </configuration>
+    <configuration name="BenchmarkSQLInjectPB in github.com/koangel/grapeSQLI" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="grapeSQLI" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <framework value="gobench" />
+      <kind value="PACKAGE" />
+      <package value="github.com/koangel/grapeSQLI" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^BenchmarkSQLInjectPB$" />
     </configuration>
     <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="grapeSQLI" />
@@ -272,9 +279,11 @@
       <item itemvalue="Go Test.Test_XSSParser in github.com/koangel/grapeSQLI" />
       <item itemvalue="Go Test.Test_SqlCheck in github.com/koangel/grapeSQLI" />
       <item itemvalue="Go Test.BenchmarkSQLInject in github.com/koangel/grapeSQLI" />
+      <item itemvalue="Go Test.BenchmarkSQLInjectPB in github.com/koangel/grapeSQLI" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.BenchmarkSQLInjectPB in github.com/koangel/grapeSQLI" />
         <item itemvalue="Go Test.BenchmarkSQLInject in github.com/koangel/grapeSQLI" />
         <item itemvalue="Go Test.Test_SqlCheck in github.com/koangel/grapeSQLI" />
         <item itemvalue="Go Test.Test_XSSParser in github.com/koangel/grapeSQLI" />
@@ -479,16 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQLParser_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#15#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Fingerprints.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -498,8 +497,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SQLParserFingers.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="324">
+          <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLParser_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="95" selection-start-line="23" selection-start-column="95" selection-end-line="23" selection-end-column="95" />
+          <folding>
+            <element signature="e#15#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

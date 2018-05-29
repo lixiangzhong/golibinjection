@@ -17,3 +17,11 @@ func BenchmarkSQLInject(b *testing.B) {
 		SQLInject("asdf asd ; -1' and 1=1 union/* foo */select load_file('/etc/passwd')--")
 	}
 }
+
+func BenchmarkSQLInjectPB(b *testing.B) {
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			SQLInject("asdf asd ; -1' and 1=1 union/* foo */select load_file('/etc/passwd')--")
+		}
+	})
+}
