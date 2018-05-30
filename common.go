@@ -4,6 +4,21 @@ import (
 	"strings"
 )
 
+func ToUpper(s string) string {
+	if s == "" { // quick return for empty strings
+		return s
+	}
+	b := make([]byte, len(s))
+	for i := 0; i < len(s); i++ {
+		if s[i] >= 'a' && s[i] <= 'z' {
+			b[i] -= 'a' - 'A'
+		} else {
+			b[i] = byte(s[i])
+		}
+	}
+	return string(b)
+}
+
 func h5_is_white(ch uint8) bool {
 	/*
 	 * \t = horizontal tab = 0x09
@@ -90,13 +105,7 @@ func strlencspn(s string, accept string) int {
 }
 
 func strchr(s string, ch uint8) int {
-	for i := 0; i < len(s); i++ {
-		if s[i] == ch {
-			return i
-		}
-	}
-
-	return -1
+	return strings.IndexByte(s, byte(ch))
 }
 
 func char_is_white(ch uint8) bool {
@@ -125,7 +134,12 @@ func char_is_white(ch uint8) bool {
  * and is much slower.
  */
 func cstrcasecmp(a string, b string) int {
-	return strings.Compare(strings.ToUpper(a), strings.ToUpper(b))
+	if strings.EqualFold(a, b) {
+		return 0
+	}
+
+	return -1
+	//return strings.Compare(ToUpper(a), ToUpper(b))
 }
 
 /**
@@ -138,7 +152,7 @@ func streqp(a string, b string) int {
 
 // 使用map进行搜索，比bsearch还快
 func bsearch_keyword_type(key string) uint8 {
-	kt, has := szKeywordMap[strings.ToUpper(key)]
+	kt, has := szKeywordMap[ToUpper(key)]
 	if has {
 		return kt.vtype
 	}

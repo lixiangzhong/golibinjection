@@ -212,7 +212,7 @@ var BLACKTAG = []string{
 }
 
 func cstrcasecmp_with_null(a, b string, cmplen int) int {
-	if strings.Contains(strings.ToUpper(b[:cmplen]), a) {
+	if strings.EqualFold(b[:cmplen], a) {
 		return 0
 	}
 

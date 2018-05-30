@@ -35,8 +35,8 @@ func main() {
 ### xss benchmark
 
 ```
-Benchmark_XSSParser-8   	 1000000	      1233 ns/op	     184 B/op	      27 allocs/op
-Benchmark_XSSParserParallel-8   	 5000000	       349 ns/op	     184 B/op	      27 allocs/op
+Benchmark_XSSParser-8   	 3000000	       458 ns/op	      80 B/op	       1 allocs/op
+Benchmark_XSSParserParallel-8   	10000000	       150 ns/op	      80 B/op	       1 allocs/op
 ```
 
 ### SQLI example
@@ -57,6 +57,6 @@ func main() {
 ### SQLI Benchmark
 
 ```
-BenchmarkSQLInject-8   	  200000	      6330 ns/op	    1288 B/op	      47 allocs/op
-BenchmarkSQLInjectParallel-8   	 1000000	      2303 ns/op	    1289 B/op	      47 allocs/op
+BenchmarkSQLInject-8   	  300000	      5019 ns/op	    1376 B/op	      61 allocs/op
+BenchmarkSQLInjectParallel-8   	 1000000	      2873 ns/op	    1376 B/op	      61 allocs/op
 ```

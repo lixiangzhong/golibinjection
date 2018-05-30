@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b22c42cf-bd84-4408-be74-718edb93db85" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/SQLParser_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/SQLParser_test.go" afterDir="false" />
-    </list>
+    <list default="true" id="b22c42cf-bd84-4408-be74-718edb93db85" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -291,9 +289,6 @@
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 22h 45m 11s.xml">
-      <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
-    </history-entry>
     <history-entry file="Test_SqlCheck_in_github_com_koangel_grapeSQLI - 2018.05.29 at 22h 47m 23s.xml">
       <configuration name="Test_SqlCheck in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
     </history-entry>
@@ -321,6 +316,9 @@
     <history-entry file="BenchmarkSQLInject_in_github_com_koangel_grapeSQLI - 2018.05.29 at 23h 13m 13s.xml">
       <configuration name="BenchmarkSQLInject in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
     </history-entry>
+    <history-entry file="BenchmarkSQLInjectPB_in_github_com_koangel_grapeSQLI - 2018.05.29 at 23h 16m 15s.xml">
+      <configuration name="BenchmarkSQLInjectPB in github.com/koangel/grapeSQLI" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -331,9 +329,9 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32951945" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32951945" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2521322" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2521322" />
       <window_info anchor="right" id="LuaJ" order="3" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32951945" />
