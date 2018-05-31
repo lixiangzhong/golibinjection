@@ -119,7 +119,10 @@ func char_is_white(ch uint8) bool {
  * and is much slower.
  */
 func cstrcasecmp(a string, b string) int {
-	return strings.Compare(ToUpper(a), ToUpper(b))
+	if len(a) > len(b) || len(b) > len(a) {
+		return -1
+	}
+	return strings.Compare(strings.ToUpper(a), strings.ToUpper(b))
 }
 
 /**
