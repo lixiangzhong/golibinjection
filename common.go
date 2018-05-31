@@ -4,21 +4,6 @@ import (
 	"strings"
 )
 
-func ToUpper(s string) string {
-	if s == "" { // quick return for empty strings
-		return s
-	}
-	b := make([]byte, len(s))
-	for i := 0; i < len(s); i++ {
-		if s[i] >= 'a' && s[i] <= 'z' {
-			b[i] -= 'a' - 'A'
-		} else {
-			b[i] = byte(s[i])
-		}
-	}
-	return string(b)
-}
-
 func h5_is_white(ch uint8) bool {
 	/*
 	 * \t = horizontal tab = 0x09
@@ -134,12 +119,7 @@ func char_is_white(ch uint8) bool {
  * and is much slower.
  */
 func cstrcasecmp(a string, b string) int {
-	if strings.EqualFold(a, b) {
-		return 0
-	}
-
-	return -1
-	//return strings.Compare(ToUpper(a), ToUpper(b))
+	return strings.Compare(ToUpper(a), ToUpper(b))
 }
 
 /**
@@ -152,7 +132,7 @@ func streqp(a string, b string) int {
 
 // 使用map进行搜索，比bsearch还快
 func bsearch_keyword_type(key string) uint8 {
-	kt, has := szKeywordMap[ToUpper(key)]
+	kt, has := szKeywordMap[strings.ToUpper(key)]
 	if has {
 		return kt.vtype
 	}

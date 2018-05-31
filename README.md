@@ -50,7 +50,7 @@ import (
 )
 
 func main() {
-    if GSQLI.SQLInject("asdf asd ; -1' and 1=1 union/* foo */select load_file('/etc/passwd')--") {
+    if err:= GSQLI.SQLInject("asdf asd ; -1' and 1=1 union/* foo */select load_file('/etc/passwd')--");err != nil {
         // todo something
     }
 }
