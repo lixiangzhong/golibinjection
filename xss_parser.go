@@ -232,7 +232,7 @@ func htmlencode_startswith(a, b string) bool {
 	var consumed int
 	var cb int
 	var first int = 1
-	n := len(a)
+	n := len(b) // from asalih github:https://github.com/asalih/grapeSQLI
 
 	/* printf("Comparing %s with %.*s\n", a,(int)n,b); */
 	ai := 0

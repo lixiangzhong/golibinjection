@@ -39,6 +39,7 @@ var (
 		`dog apple cat \"banana \'bar`,
 		"102 TABLE CLOTH",
 		"(1001-'1') union select 1,2,3,4 from credit_cards",
+		"<img src=\"\">", // from asalih github:https://github.com/asalih/grapeSQLI
 	}
 )
 
