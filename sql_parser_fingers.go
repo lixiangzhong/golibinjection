@@ -1,4 +1,4 @@
-package GSQLI
+package gsqli
 
 var (
 	szkeywords = []keyword_t{

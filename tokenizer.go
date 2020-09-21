@@ -1,4 +1,4 @@
-package GSQLI
+package gsqli
 
 const (
 	TYPE_TK_NONE        = 0
