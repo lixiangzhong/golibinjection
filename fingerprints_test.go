@@ -1,4 +1,4 @@
-package GSQLI
+package gsqli
 
 import (
 	"testing"

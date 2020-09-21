@@ -4,7 +4,7 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 
-	"github.com/koangel/grapeSQLI"
+	gsqli "github.com/koangel/grapeSQLI"
 )
 
 var (
@@ -44,6 +44,6 @@ func main() {
 	}*/
 
 	for {
-		GSQLI.SQLInject("asdf asd ; -1' and 1=1 union/* foo */select load_file('/etc/passwd')--")
+		gsqli.SQLInject("asdf asd ; -1' and 1=1 union/* foo */select load_file('/etc/passwd')--")
 	}
 }

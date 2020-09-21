@@ -2,7 +2,7 @@
 // libinjection Copyright (c) 2012-2016 Nick Galbreath
 // golang author: koangel(jackliu100@gmail.com)
 
-package GSQLI
+package gsqli
 
 const (
 	DATA_TEXT = iota
