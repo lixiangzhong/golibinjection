@@ -7,7 +7,6 @@
   |___/          |_|                     grapeSQLI is easy to use Sql Inject & XSS Parser
 ```
 
-
 ### grapeSQLI
 
 grapeSQLI是一种简单易用的Sql inject & XSS分析程序。
