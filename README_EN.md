@@ -6,6 +6,8 @@
   \__, |_|  \__,_| .__/ \___|____/ \__\_\_____\____|\___/   
   |___/          |_|                     grapeSQLI is easy to use Sql Inject & XSS Parser
 ```
+[![made-with-Go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg)](http://golang.org)
+[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 ### grapeSQLI
 
@@ -69,3 +71,14 @@ func main() {
 BenchmarkSQLInject-8   	  300000	      5019 ns/op	    1376 B/op	      61 allocs/op
 BenchmarkSQLInjectParallel-8   	 1000000	      2873 ns/op	    1376 B/op	      61 allocs/op
 ```
+
+
+## **Thanks**
+
+Use Jetbrains Ide for project
+
+[![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/kennethreitz)
+[![Generic badge](https://img.shields.io/badge/JetBrains-Goland-<COLOR>.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/JetBrains-CLion-<COLOR>.svg)](https://shields.io/)
+
+
