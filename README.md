@@ -78,7 +78,7 @@ BenchmarkSQLInjectParallel-8   	 1000000	      2873 ns/op	    1376 B/op	      61
 
 Use Jetbrains Ide for project
 
-[![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/kennethreitz)
+[![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/JetBrains)
 [![Generic badge](https://img.shields.io/badge/JetBrains-Goland-<COLOR>.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/JetBrains-CLion-<COLOR>.svg)](https://shields.io/)
 
