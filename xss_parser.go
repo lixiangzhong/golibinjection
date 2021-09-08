@@ -5,6 +5,7 @@
 package gsqli
 
 import (
+	"html"
 	"strings"
 )
 
@@ -46,98 +47,105 @@ var gsHexDecodeMap = [256]int{
 	256, 256, 256, 256,
 }
 
-func html_decode_char_at(src string) (ret, consumed int) {
-	var val int = 0
-	var i int
-	var ch int
-
-	if len(src) == 0 {
-		consumed = 0
-		ret = -1
-		return
-	}
-
-	consumed = 1
-	if src[0] != '&' || len(src) < 2 {
-		ret = int(src[0])
-		return
-	}
-
-	if src[1] != '#' {
-		/* normally this would be for named entities
-		 * but for this case we don't actually care
-		 */
-		ret = int('&')
-		return
-	}
-
-	if src[2] == 'x' || src[2] == 'X' {
-		ch = int(src[3])
-		ch = gsHexDecodeMap[ch]
-		if int(ch) == 256 {
-			/* degenerate case  '&#[?]' */
-			ret = int('&')
-			return
-		}
-		val = int(ch)
-		i = 4
-		for i < len(src) {
-			ch = int(src[i])
-			if ch == ';' {
-				consumed = i + 1
-				ret = val
-				return
-			}
-			ch = gsHexDecodeMap[ch]
-			if int(ch) == 256 {
-				consumed = i
-				ret = val
-				return
-			}
-
-			val = (val * 16) + int(ch)
-			if val > 0x1000FF {
-				ret = int('&')
-				return
-			}
-			i++
-		}
-		consumed = i
-		ret = val
-		return
-	} else {
-		i = 2
-		ch = int(src[i])
-		if ch < '0' || ch > '9' {
-			ret = int('&')
-			return
-		}
-		val = int(ch) - '0'
-		i += 1
-		for i < len(src) {
-			ch = int(src[i])
-			if ch == ';' {
-				consumed = i + 1
-				ret = val
-				return
-			}
-			if ch < '0' || ch > '9' {
-				consumed = i
-				ret = val
-				return
-			}
-			val = (val * 10) + int(ch-'0')
-			if val > 0x1000FF {
-				ret = int('&')
-				return
-			}
-			i++
-		}
-		consumed = i
-		ret = val
-		return
-	}
-}
+//func html_decode_char_at(src string) (ret, consumed int) {
+//	var val int = 0
+//	var i int
+//	var ch int
+//
+//	if len(src) == 0 {
+//		consumed = 0
+//		ret = -1
+//		return
+//	}
+//
+//	consumed = 1
+//	if src[0] != '&' || len(src) < 2 {
+//		ret = int(src[0])
+//		return
+//	}
+//
+//	if src[1] != '#' {
+//		/* normally this would be for named entities
+//		 * but for this case we don't actually care
+//		 */
+//		ret = int('&')
+//		return
+//	}
+//
+//	if len(src) < 3 {
+//		return '&', consumed
+//	}
+//
+//	if src[2] == 'x' || src[2] == 'X' {
+//		if len(src) < 4 {
+//			return '&', consumed
+//		}
+//		ch = int(src[3])
+//		ch = gsHexDecodeMap[ch]
+//		if int(ch) == 256 {
+//			/* degenerate case  '&#[?]' */
+//			ret = int('&')
+//			return
+//		}
+//		val = int(ch)
+//		i = 4
+//		for i < len(src) {
+//			ch = int(src[i])
+//			if ch == ';' {
+//				consumed = i + 1
+//				ret = val
+//				return
+//			}
+//			ch = gsHexDecodeMap[ch]
+//			if int(ch) == 256 {
+//				consumed = i
+//				ret = val
+//				return
+//			}
+//
+//			val = (val * 16) + int(ch)
+//			if val > 0x1000FF {
+//				ret = int('&')
+//				return
+//			}
+//			i++
+//		}
+//		consumed = i
+//		ret = val
+//		return
+//	} else {
+//		i = 2
+//		ch = int(src[i])
+//		if ch < '0' || ch > '9' {
+//			ret = int('&')
+//			return
+//		}
+//		val = int(ch) - '0'
+//		i += 1
+//		for i < len(src) {
+//			ch = int(src[i])
+//			if ch == ';' {
+//				consumed = i + 1
+//				ret = val
+//				return
+//			}
+//			if ch < '0' || ch > '9' {
+//				consumed = i
+//				ret = val
+//				return
+//			}
+//			val = (val * 10) + int(ch-'0')
+//			if val > 0x1000FF {
+//				ret = int('&')
+//				return
+//			}
+//			i++
+//		}
+//		consumed = i
+//		ret = val
+//		return
+//	}
+//}
 
 /*
  * view-source:
@@ -228,58 +236,14 @@ func cstrcasecmp_with_null(a, b string, cmplen int) int {
  * return 1 if match / starts with
  * return 0 if not
  */
-func htmlencode_startswith(a, b string) bool {
-	var consumed int
-	var cb int
-	var first int = 1
-	n := len(b) // from asalih github:https://github.com/asalih/grapeSQLI
-
-	/* printf("Comparing %s with %.*s\n", a,(int)n,b); */
-	ai := 0
-	bi := 0
-	for n > 0 {
-		if ai >= len(a) {
-			/* printf("Match EOL!\n"); */
-			return true
-		}
-		cb, consumed = html_decode_char_at(b[bi:])
-		bi += consumed
-		n -= consumed
-
-		if first == 1 && cb <= 32 {
-			/* ignore all leading whitespace and control characters */
-			continue
-		}
-		first = 0
-
-		if cb == 0 {
-			/* always ignore null characters in user input */
-			continue
-		}
-
-		if cb == 10 {
-			/* always ignore vertical tab characters in user input */
-			/* who allows this?? */
-			continue
-		}
-
-		if cb >= 'a' && cb <= 'z' {
-			/* upcase */
-			cb -= 0x20
-		}
-
-		if a[ai] != uint8(cb) {
-			/* printf("    %c != %c\n", *a, cb); */
-			/* mismatch */
-			return false
-		}
-		ai++
-	}
-
-	if ai >= len(a) {
+func htmlencode_startswith(prefix string, src string) bool {
+	src = html.EscapeString(src)
+	src = strings.ToUpper(src)
+	prefix = html.EscapeString(prefix)
+	prefix = strings.ToUpper(prefix)
+	if strings.HasPrefix(src, prefix) {
 		return true
 	}
-
 	return false
 }
 
@@ -287,30 +251,15 @@ func is_black_tag(s string, len int) bool {
 	if len < 3 {
 		return false
 	}
-
 	for _, black := range BLACKTAG {
 		if cstrcasecmp_with_null(black, s, len) == 0 {
 			/* printf("Got black tag %s\n", *black); */
 			return true
 		}
 	}
-
-	/* anything SVG related */
-	if (s[0] == 's' || s[0] == 'S') &&
-		(s[1] == 'v' || s[1] == 'V') &&
-		(s[2] == 'g' || s[2] == 'G') {
-		/*        printf("Got SVG tag \n"); */
+	if strings.EqualFold(s[:3], "svg") || strings.EqualFold(s[:3], "xsl") {
 		return true
 	}
-
-	/* Anything XSL(t) related */
-	if (s[0] == 'x' || s[0] == 'X') &&
-		(s[1] == 's' || s[1] == 'S') &&
-		(s[2] == 'l' || s[2] == 'L') {
-		/*      printf("Got XSL tag\n"); */
-		return true
-	}
-
 	return false
 }
 
@@ -418,7 +367,6 @@ func libinjection_is_xss(s string, flags int) int {
 				if is_black_url(h5.s[h5.token_start : h5.token_start+h5.token_len]) {
 					return 1
 				}
-				break
 			case TYPE_STYLE:
 				return 1
 			case TYPE_ATTR_INDIRECT:
@@ -426,7 +374,6 @@ func libinjection_is_xss(s string, flags int) int {
 				if is_black_attr(h5.s[h5.token_start:], h5.token_len) > 0 {
 					return 1
 				}
-				break
 				/*
 				   default:
 				   assert(0);
@@ -435,7 +382,7 @@ func libinjection_is_xss(s string, flags int) int {
 			attr = TYPE_NONE
 		} else if h5.token_type == TAG_COMMENT {
 			/* IE uses a "`" as a tag ending char */
-			if memchr(h5.s[h5.token_start:], h5.token_start, '`') != 0 {
+			if strings.Contains(h5.s[h5.token_start:h5.token_start+h5.token_len], "`") {
 				return 1
 			}
 

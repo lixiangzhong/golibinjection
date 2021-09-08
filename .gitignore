@@ -1,2 +1,4 @@
 debug.test
 .idea
+*.zip
+fuzz_output

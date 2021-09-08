@@ -750,18 +750,17 @@ func parse_qstring_core(sf *sqli_state, offset int) int {
 		break
 	}
 
-	search := string(append([]byte{byte(ch)}, '\''))
-	strend = memchr2(cs[pos+3:], search)
+	strend = memchr2(cs[pos+3:], string([]byte{ch, '\''}))
 	if strend == -1 {
 		st_assign(sf.current, TYPE_STRING, pos+3, slen-pos-3, cs[pos+3:])
 		sf.current.str_open = 'q'
 		sf.current.str_close = CHAR_NULL
 		return slen
 	} else {
-		st_assign(sf.current, TYPE_STRING, pos+3, strend-pos-3, cs[pos+3:])
+		st_assign(sf.current, TYPE_STRING, pos+3, len(cs[pos+3:]), cs[pos+3:])
 		sf.current.str_open = 'q'
 		sf.current.str_close = 'q'
-		return strend + 2
+		return pos + 3 + strend + 2
 	}
 }
 
@@ -970,7 +969,7 @@ func parse_var(sf *sqli_state) int {
 
 	xlen = strlencspn(cs[pos:], " <>:\\?=@!#~+-*/&|^%(),';\t\n\v\f\r'`\"")
 	if xlen == 0 {
-		st_assign(sf.current, TYPE_VARIABLE, pos, 1, cs[pos:])
+		st_assign(sf.current, TYPE_VARIABLE, pos, 0, cs[pos:])
 		return pos
 	} else {
 		st_assign(sf.current, TYPE_VARIABLE, pos, xlen, cs[pos:])
@@ -1008,7 +1007,7 @@ func parse_money(sf *sqli_state) int {
 				sf.current.str_close = CHAR_NULL
 				return slen
 			} else {
-				st_assign(sf.current, TYPE_STRING, pos+2, strend-(pos+2), cs[pos+2:])
+				st_assign(sf.current, TYPE_STRING, pos+2, len(cs[pos+2:]), cs[pos+2:])
 				sf.current.str_open = '$'
 				sf.current.str_close = '$'
 				return strend + 2

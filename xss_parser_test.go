@@ -70,3 +70,8 @@ func Benchmark_XSSParserParallel(b *testing.B) {
 		}
 	})
 }
+
+//func Test_html_decode_char_at(t *testing.T) {
+//	s := "&#12345"
+//	t.Log(html_decode_char_at(s))
+//}

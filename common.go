@@ -16,6 +16,9 @@ func h5_is_white(ch uint8) bool {
 }
 
 func memchr(src string, pos int, char byte) int {
+	if len(src) < pos {
+		return -1
+	}
 	ipos := strings.IndexByte(src[pos:], char)
 	if ipos == -1 {
 		return -1
@@ -169,7 +172,6 @@ func st_assign(st *sqli_token, stype uint8, pos int, len int, value string) {
 	if last >= MSIZE {
 		last = MSIZE - 1
 	}
-
 	st.ttype = stype
 	st.pos = pos
 	st.len = last
@@ -190,6 +192,9 @@ func st_copy(dst, src *sqli_token) {
 }
 
 func st_is_arithmetic_op(st *sqli_token) bool {
+	if len(st.val) < 1 {
+		return false
+	}
 	ch := st.val[0]
 	return (st.ttype == TYPE_OPERATOR && st.len == 1 &&
 		(ch == '*' || ch == '/' || ch == '-' || ch == '+' || ch == '%'))
