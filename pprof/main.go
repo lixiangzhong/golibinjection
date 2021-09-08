@@ -4,7 +4,7 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 
-	gsqli "github.com/koangel/grapeSQLI"
+	gsqli "github.com/lixiangzhong/golibinjection"
 )
 
 var (

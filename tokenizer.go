@@ -1,4 +1,4 @@
-package gsqli
+package golibinjection
 
 const (
 	TYPE_TK_NONE        = 0

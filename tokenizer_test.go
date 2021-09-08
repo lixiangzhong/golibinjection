@@ -1,1 +1,1 @@
-package gsqli
+package golibinjection

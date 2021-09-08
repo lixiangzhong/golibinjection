@@ -1,7 +1,7 @@
 //go:build gofuzz
 // +build gofuzz
 
-package gsqli
+package golibinjection
 
 func Fuzz(data []byte) int {
 	//XSSParser(string(data))

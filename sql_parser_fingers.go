@@ -1,4 +1,4 @@
-package gsqli
+package golibinjection
 
 var (
 	szkeywords = []keyword_t{

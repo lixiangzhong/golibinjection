@@ -1,4 +1,4 @@
-package gsqli
+package golibinjection
 
 import (
 	"encoding/json"
