@@ -24,7 +24,7 @@ libinjection已经拥有非常完美的思维模式，没必要颠覆它，所�
 ### 用法
 
 ```
-    go get -u github.com/koangel/grapeSQLI
+    go get github.com/lixiangzhong/golibinjection
 ```
 
 
@@ -34,11 +34,11 @@ libinjection已经拥有非常完美的思维模式，没必要颠覆它，所�
 package main
 
 import (
-    "github.com/koangel/grapeSQLI"
+    "github.com/lixiangzhong/golibinjection"
 )
 
 func main() {
-    if GSQLI.XSSParser("<a href=\"  javascript:alert(1);\" >") {
+    if golibinjection.XSSParser("<a href=\"  javascript:alert(1);\" >") {
         // todo something
     }
 }
@@ -57,11 +57,11 @@ Benchmark_XSSParserParallel-8   	10000000	       150 ns/op	      80 B/op	       
 package main
 
 import (
-    "github.com/koangel/grapeSQLI"
+ "github.com/lixiangzhong/golibinjection"
 )
 
 func main() {
-    if err:= GSQLI.SQLInject("asdf asd ; -1' and 1=1 union/* foo */select load_file('/etc/passwd')--");err != nil {
+    if err:= golibinjection.SQLInject("asdf asd ; -1' and 1=1 union/* foo */select load_file('/etc/passwd')--");err != nil {
         // todo something
     }
 }
